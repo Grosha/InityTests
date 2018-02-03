@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Functional inity test" verbose="1">
+    <test name="test scene go">
+        <classes>
+            <class name="TestGoScene">
+            </class>
+        </classes>
+    </test>
+    <test name="test scene back">
+        <classes>
+            <class name="TestBackScene">
+            </class>
+        </classes>
+    </test>
+</suite>

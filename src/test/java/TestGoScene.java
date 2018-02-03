@@ -2,7 +2,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class TestGo extends SetUpAppium {
+public class TestGoScene extends SetUpAppium {
     private GoScene goScene ;
     private BackScene backScene;
 
