@@ -20,7 +20,7 @@ import java.util.List;
 
 public class SikuliHelper {
 
-    private final double DEFAULT_MIN_SIMILARITY = 1.0;
+    private final double DEFAULT_MIN_SIMILARITY = 0.9;
     public AndroidDriver driver;
 
     public SikuliHelper(AndroidDriver driver) {
