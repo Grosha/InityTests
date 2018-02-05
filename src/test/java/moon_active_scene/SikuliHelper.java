@@ -162,7 +162,7 @@ public class SikuliHelper {
     }
 
     /**
-     * TODO
+     * Custom checkbox's toggle
      */
     public void toggleCheckBox(String pattern, boolean checkboxStatus) {
         if (elementExists(pattern) != checkboxStatus) {
