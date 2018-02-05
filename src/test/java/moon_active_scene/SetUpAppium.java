@@ -11,22 +11,24 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public abstract class SetUpAppium {
+    final DesiredCapabilities capabilities;
     public AndroidDriver driver;
+    private final static String packageDK = "com.moonactive.automationtest";
+    private final static String mainActivity = "com.unity3d.player.UnityPlayerActivity";
 
-    private String packageDK = "com.moonactive.automationtest";
-    private String mainActivity = "com.unity3d.player.UnityPlayerActivity";
-
-
-    @BeforeMethod
-    public void setUp() throws MalformedURLException {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
+    public SetUpAppium() {
+        capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName", "Android Emulator");
         capabilities.setCapability("appPackage", packageDK);
         capabilities.setCapability("appWaitPackage", packageDK);
         capabilities.setCapability("appActivity", mainActivity);
+    }
+
+    @BeforeMethod
+    public void setUp() throws MalformedURLException {
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        initDriver();
+        initDriver(driver);
 
         //switch to native app + portrait mode
         driver.context("NATIVE_APP");
@@ -38,5 +40,5 @@ public abstract class SetUpAppium {
         driver.quit();
     }
 
-    public abstract void initDriver();
+    public abstract void initDriver(AndroidDriver driver);
 }

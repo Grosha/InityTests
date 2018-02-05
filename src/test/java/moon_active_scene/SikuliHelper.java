@@ -24,16 +24,23 @@ public class SikuliHelper {
     private final double DEFAULT_MIN_SIMILARITY = 1.0;
     public AndroidDriver driver;
 
-    public SikuliHelper(AndroidDriver driver) {
-        this.driver = driver;
+    public SikuliHelper() {
         Settings.MinSimilarity = DEFAULT_MIN_SIMILARITY;
-        System.out.println(Settings.MinSimilarity);
+        System.out.println( "Create: " + Settings.MinSimilarity);
     }
 
-    public SikuliHelper(AndroidDriver driver, double minSimilarity) {
+    public void setDriver(AndroidDriver driver) {
         this.driver = driver;
+    }
+
+    public void setMinSimilarity(double minSimilarity) {
         Settings.MinSimilarity = minSimilarity;
-        System.out.println(Settings.MinSimilarity);
+        System.out.println("Set: " + Settings.MinSimilarity);
+    }
+
+    public void setDefaultSikuliSettings() {
+        Settings.MinSimilarity = DEFAULT_MIN_SIMILARITY;
+        System.out.println("Reset: " + Settings.MinSimilarity);
     }
 
     public void clickByImage(String targetImgPath) {
@@ -53,6 +60,7 @@ public class SikuliHelper {
             throw new ElementNotVisibleException("Element not found - " + targetImgPath);
         }
     }
+
     // Convenience method to long press an element on screen with 1 second press duration
     public void longPressByImage(String targetImgPath) {
         Point2D coords = getCoords(takeScreenshot(), targetImgPath);
@@ -63,6 +71,7 @@ public class SikuliHelper {
             throw new ElementNotVisibleException("Element not found - " + targetImgPath);
         }
     }
+
     // Convenience method to long press an element on screen with customisable press duration
     public void longPressByImage(String targetImgPath, int pressDuration) {
         Point2D coords = getCoords(takeScreenshot(), targetImgPath);
@@ -76,7 +85,8 @@ public class SikuliHelper {
 
     /**
      * getCoords returns the coordinates of the FIRST element that matches the specified
-     * @param baseImg is the screenshot of the device
+     *
+     * @param baseImg       is the screenshot of the device
      * @param targetImgPath is the image of the element that you want to find
      * @return coordinates of the centre of the element found as Point2D
      */
@@ -112,6 +122,7 @@ public class SikuliHelper {
 
     /**
      * getCoords returns a list of coordinates of all the matches found for the element specified
+     *
      * @param targetImgPath is the image of the element that you want to find
      * @return list of coordinates of the matches found for the element specified
      */
@@ -130,6 +141,7 @@ public class SikuliHelper {
 
     /**
      * Convenience method that takes a screenshot of the device and returns a BufferedImage for further processing.
+     *
      * @return screenshot from the device as BufferedImage
      */
     public BufferedImage takeScreenshot() {

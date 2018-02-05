@@ -4,14 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class TestScene extends SetUpAppium {
-
-    private SikuliHelper sikuliHelper;
-
-    @Override
-    public void initDriver() {
-        sikuliHelper = new SikuliHelper(driver);
-    }
+public class TestScene extends SetUpSikuli {
 
     @DataProvider(name = "backScene")
     public static Object[][] goSceneSetting() {
@@ -44,7 +37,7 @@ public class TestScene extends SetUpAppium {
 
     @Test(dataProvider = "goScene")
     public void testResultGo(boolean checkBoxStatus, String resultText) {
-        sikuliHelper = new SikuliHelper(driver, 0.9);
+        sikuliHelper.setMinSimilarity(0.9);
         sikuliHelper.waitUntilImageExists(Pattern.IMAGE_BUTTON_GO, 5);
 
         sikuliHelper.toggleCheckBox(Pattern.IMAGE_CHECKBOX_TRUE, checkBoxStatus);
