@@ -22,6 +22,8 @@ Automated functional tests for application MoonActive.
 3. Appium
     1. download Appium and install
     2. set up Appium
+    
+4. SetUp MoonActive application to the android devices
 
 
 ##### Run Tests
