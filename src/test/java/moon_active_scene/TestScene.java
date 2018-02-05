@@ -6,16 +6,16 @@ import org.testng.annotations.Test;
 
 public class TestScene extends SetUpSikuli {
 
-    @DataProvider(name = "backScene")
-    public static Object[][] goSceneSetting() {
+    @DataProvider(name = "welcomeScene")
+    public static Object[][] welcomeSceneSetting() {
         return new Object[][]{
                 {true, Pattern.IMAGE_CHECKBOX_TRUE},
                 {false, Pattern.IMAGE_CHECKBOX_FALSE}
         };
     }
 
-    @Test(dataProvider = "backScene")
-    public void testBackToTheGoScene(boolean checkBoxStatus, String resultStatusCheckbox) {
+    @Test(dataProvider = "welcomeScene")
+    public void testBackToTheWelcomeScene(boolean checkBoxStatus, String resultStatusCheckbox) {
         sikuliHelper.waitUntilImageExists(Pattern.IMAGE_BUTTON_GO, 5);
 
         sikuliHelper.toggleCheckBox(Pattern.IMAGE_CHECKBOX_TRUE, checkBoxStatus);
@@ -27,16 +27,16 @@ public class TestScene extends SetUpSikuli {
         Assert.assertTrue(sikuliHelper.elementExists(resultStatusCheckbox), "Incorrect checkbox status was shown when returned from scene 'Back'");
     }
 
-    @DataProvider(name = "goScene")
-    public static Object[][] backSceneSetting() {
+    @DataProvider(name = "resultScene")
+    public static Object[][] resultSceneSetting() {
         return new Object[][]{
                 {true, Pattern.IMAGE_TEXT_SUCCESS},
                 {false, Pattern.IMAGE_TEXT_FAILURE}
         };
     }
 
-    @Test(dataProvider = "goScene")
-    public void testResultGo(boolean checkBoxStatus, String resultText) {
+    @Test(dataProvider = "resultScene")
+    public void testResultScene(boolean checkBoxStatus, String resultText) {
         sikuliHelper.setMinSimilarity(0.9);
         sikuliHelper.waitUntilImageExists(Pattern.IMAGE_BUTTON_GO, 5);
 
