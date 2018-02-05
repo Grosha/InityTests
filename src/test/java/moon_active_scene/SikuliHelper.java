@@ -1,4 +1,5 @@
-import io.appium.java_client.AppiumDriver;
+package moon_active_scene;
+
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.ElementNotVisibleException;
@@ -20,12 +21,18 @@ import java.util.List;
 
 public class SikuliHelper {
 
-    private final double DEFAULT_MIN_SIMILARITY = 0.9;
+    private final double DEFAULT_MIN_SIMILARITY = 1.0;
     public AndroidDriver driver;
 
     public SikuliHelper(AndroidDriver driver) {
         this.driver = driver;
         Settings.MinSimilarity = DEFAULT_MIN_SIMILARITY;
+        System.out.println(Settings.MinSimilarity);
+    }
+
+    public SikuliHelper(AndroidDriver driver, double minSimilarity) {
+        this.driver = driver;
+        Settings.MinSimilarity = minSimilarity;
         System.out.println(Settings.MinSimilarity);
     }
 
@@ -152,5 +159,14 @@ public class SikuliHelper {
      */
     public void waitUntilImageExists(final String targetImgPath, long timeoutDuration) {
         new WebDriverWait(driver, timeoutDuration).until((WebDriver driver) -> elementExists(targetImgPath));
+    }
+
+    /**
+     * TODO
+     */
+    public void toggleCheckBox(String pattern, boolean checkboxStatus) {
+        if (elementExists(pattern) != checkboxStatus) {
+            clickByImage(pattern);
+        }
     }
 }

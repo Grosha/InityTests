@@ -1,7 +1,8 @@
+package moon_active_scene;
+
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
